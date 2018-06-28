@@ -14,12 +14,11 @@ public class BasicAuthTests {
     private static final String TEST_USER_FIRSTNAME = "test_firstname";
     private static final String TEST_USER_LASTNAME = "test_lastname";
     private static final boolean TEST_USER_ACTIVE = true;
-    //private static final String host = "http://localhost:8080";
-    private static final String host = "http://dlb1.aureacentral.com:10203xxx";
+    private static final String host = "http://localhost:8080";
+    //private static final String host = "http://dlb1.aureacentral.com:10203xxx";
     public static final String OAUTH_TOKEN = "/oauth/token";
     public static final String USER = "/user";
     public static final String TWO_FA = "/oauth/2fa";
-
     String token;
 
     @Before
@@ -27,18 +26,10 @@ public class BasicAuthTests {
         getToken(getResponseWithToken(OAUTH_TOKEN));
     }
 
-    public void shouldReturnErrorOnPostingCredentials() {
-        getResponseWithToken(OAUTH_TOKEN).then().assertThat().statusCode(200);
-    }
 
     @Test
     public void shouldReturnOkOnPostingCredentials() {
         getResponseWithToken(OAUTH_TOKEN).then().assertThat().statusCode(200);
-    }
-
-    @Test
-    public void shouldReturnErrorOnPostingCredentialsWithBadToken() {
-        getResponseWithToken(OAUTH_TOKEN).then().assertThat().statusCode(401);
     }
 
     @Test
